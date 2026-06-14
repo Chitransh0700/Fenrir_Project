@@ -1,0 +1,26 @@
+National Social Gaming (NSG) is a full-stack online gaming platform where 
+users discover, play, and compete across a library of web-based games. The 
+platform combines a game discovery hub with social features including 
+leaderboards, tournaments, friend invites, community interaction, rewards, 
+and a complete authentication system. Users can browse games by category, 
+view trending titles, read and post player reviews, favourite games, track 
+recently played titles, and launch games directly from the browser.
+
+The platform requires both a frontend application and a backend API server 
+with persistent data storage. The frontend reproduces the homepage, game 
+detail page (desktop and responsive), and footer exactly as shown in the 
+reference images. The backend provides REST API endpoints for games, 
+categories, reviews, user authentication, favourites, recently played 
+history, and the rewards/currency system.
+
+The platform must contain a minimum of 15 playable game entries across 
+multiple categories (Action, Adventure, Racing, Puzzle, Sports, Strategy), 
+each with full metadata, screenshots, reviews, and category tags. The 
+design follows a dark gaming aesthetic with neon green, cyan, and purple 
+accents on deep navy backgrounds, using the NSG logo and colour palette 
+provided as reference assets.
+
+The five reference images provided show: the NSG logo (Image 1), the 
+desktop game detail page (Image 2), the responsive/tablet game detail page 
+(Image 3), the homepage (Image 4), and the site footer (Image 5). All five 
+must be reproduced faithfully across the frontend.

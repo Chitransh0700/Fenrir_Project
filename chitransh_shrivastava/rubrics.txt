@@ -1,0 +1,32 @@
+NSG National Social Gaming Grading Rubric
+
+1. The backend server connects to the database on startup using the connection string from .env.
+2. The seed script populates the database with a minimum of 15 games.
+3. The seed script seeds the 6 categories Action, Adventure, Racing, Puzzle, Sports, Strategy.
+4. The seed script creates a minimum of 4 screenshots for every game.
+5. The seed script creates a minimum of 3 reviews for every game.
+6. The seed script creates one demo user with email demo@nsg.com, password Demo1234!, coin balance 250.
+7. Every protected endpoint returns HTTP 401 when called without a valid Authorization Bearer token.
+8. POST /api/auth/register stores the password hashed with bcrypt.
+9. No API response exposes the password value or the password hash.
+10. GET /api/games/trending returns the 6 trending games ordered ascending by trendingRank.
+11. GET /api/games/recommended returns a minimum of 6 games.
+12. GET /api/categories returns a game count value for each category.
+13. The homepage at 1440px orders its sections as hero banner, then Recommended For You, then Browse by Categories, then Trending Now.
+14. The left sidebar lists nav items in the order Home, All Games, Categories, Trending, New Games, Top Rated, Multiplayer, Favorites, Recently Played.
+15. The active sidebar item uses background colour #16231A.
+16. The active sidebar item uses icon/text colour #A3FF12.
+17. The hero banner displays the text PLAY TOGETHER in white.
+18. The hero banner displays the text WIN TOGETHER in colour #A3FF12.
+19. A game card displays a lightning bolt badge when the game isFeatured value is true.
+20. The Recommended For You row renders a minimum of 6 game cards from GET /api/games/recommended.
+21. The Trending Now cards display rank badges numbered 1 to 6 overlaid on each thumbnail.
+22. The game detail video player displays the overlays POS 2/8, LAP 2/3 with timer 01:45.67, speedometer 238 KM/H.
+23. For City Car Racer the Player Reviews aggregate rating displays 4.6.
+24. For City Car Racer the 5 star distribution bar displays 73%.
+25. The Play Now button has a height of 48px.
+26. The Game Information panel displays the fields Developer, Release Date, Last Update, Platform, Language, Game Mode from the API response.
+27. The footer renders the four link columns EXPLORE, COMMUNITY, SUPPORT, COMPANY.
+28. Submitting a valid email in the footer newsletter form calls POST /api/newsletter/subscribe.
+29. After a daily reward is claimed, canClaimDaily returns false on a subsequent call within 24 hours.
+30. The backend includes a .env.example file documenting MONGODB_URI, JWT_SECRET, PORT.

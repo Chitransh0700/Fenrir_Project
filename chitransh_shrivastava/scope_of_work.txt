@@ -1,0 +1,211 @@
+The freelancer is responsible for building a complete full-stack web 
+application for the National Social Gaming platform, covering both 
+frontend and backend.
+
+═══════════════════════════════════════════
+FRONTEND SCOPE
+═══════════════════════════════════════════
+
+PAGE 1  HOMEPAGE (reference: Image 4 / Front_page.png)
+
+Top navigation bar containing:
+- NSG logo (top left, from logo.png)
+- Search bar with placeholder "Search games, categories..."
+- Rewards button with icon and label
+- Coin/currency display showing amount (e.g. 120) with dropdown arrow
+- Login / Sign Up button in purple (functional, opens auth modal/page)
+
+Left sidebar containing:
+- NSG logo at top with "NATIONAL SOCIAL GAMING" tagline
+- Navigation links: Home, All Games, Categories, Trending, New Games, 
+  Top Rated, Multiplayer, Favorites, Recently Played
+- Play More Earn More promotional card with trophy icon and 
+  View Challenges button
+- Settings, Help & Support, Login/Sign Up links
+- Dark Mode toggle switch
+
+Hero banner section containing:
+- Headline "PLAY TOGETHER WIN TOGETHER"
+- Subheadline text
+- Two CTA buttons: Explore Games (green outlined) and Join Now
+- Character illustration with glow effects
+- Right side quick access cards: Daily Rewards, Leaderboards, Play Together
+- Dot pagination indicators
+
+Recommended For You section:
+- Horizontal scrolling row of minimum 6 game cards pulled from the 
+  backend API
+- View All link, scroll arrow button
+- Featured badge (lightning bolt) on featured games
+
+Browse by Categories section:
+- Category cards: Action, Adventure, Racing, Puzzle, Sports, Strategy, 
+  View All  each showing icon, name, and live game count from backend
+
+Trending Now section:
+- Horizontal scrolling row with rank badges (1-6) overlaid on cards, 
+  pulled from backend trending endpoint
+
+PAGE 2  GAME DETAIL PAGE  DESKTOP (reference: Image 2)
+
+- Breadcrumb: Home > [Category] > [Game Title]
+- Game header: title, verified badge, rating, player count, category, 
+  tag chips
+- Favorite and Share buttons (Favorite is functional  calls backend API)
+- Video player container with POS/LAP/timer/speedometer overlays
+- Vertical screenshot thumbnail strip (4 visible + "+N Screenshots")
+- About This Game section with Read More toggle
+- Key Features section with checkmark list
+- Player Reviews section: aggregate rating, star distribution bars, 
+  individual review cards (pulled live from backend)
+- Right panel: Play card (Play Now, Invite Friends buttons), Game 
+  Information panel (Developer, Release Date, Last Update, Platform, 
+  Language, Game Mode)
+
+PAGE 3  GAME DETAIL PAGE  RESPONSIVE (reference: Image 3)
+
+- Same content reflowed for tablet/mobile width
+- Screenshot strip moves below video as horizontal scroll
+- You May Also Like section with 3 related games (from backend 
+  recommendation endpoint)
+
+FOOTER (reference: Image 5 / footer.png)
+
+- NSG logo with description text
+- Google Play and App Store badges (static images/links)
+- Social media icons row: Discord, Instagram, YouTube, Twitter, Facebook
+- Four link columns: EXPLORE, COMMUNITY, SUPPORT, COMPANY  each with 
+  the exact links shown in the reference image
+- "STAY IN THE GAME" newsletter signup box with email input and 
+  Subscribe Now button (functional  posts to backend newsletter endpoint)
+- Stats bar: 2M+ Active Players, 1500+ Games, 500K+ Communities, 
+  250+ Tournaments, 24/7 Live Events, 99.9% Uptime
+- Bottom bar: Safe & Secure Gaming badge, copyright text, Secured 
+  Payments badge
+
+AUTHENTICATION PAGES (not in reference images, build to match site style)
+
+- Login page: email/password fields, Login button, link to Sign Up
+- Sign Up page: username, email, password fields, Sign Up button, 
+  link to Login
+- Both styled consistently with the dark NSG theme and colour palette
+
+═══════════════════════════════════════════
+BACKEND SCOPE
+═══════════════════════════════════════════
+
+Build a REST API server using Node.js and Express with a MongoDB 
+database (or equivalent NoSQL/SQL database of the developer's choice, 
+documented in README).
+
+Required API endpoints:
+
+GAMES
+GET    /api/games                 list all games, supports query 
+                                    params: category, trending, 
+                                    featured, search
+GET    /api/games/:id             single game detail with screenshots, 
+                                    reviews, related games
+GET    /api/games/trending         top 6 trending games with rank
+GET    /api/games/recommended      recommended for you list
+
+CATEGORIES
+GET    /api/categories             list of all categories with live 
+                                    game counts
+
+REVIEWS
+GET    /api/games/:id/reviews      all reviews for a game
+POST   /api/games/:id/reviews      submit a new review (authenticated)
+
+USERS / AUTH
+POST   /api/auth/register          create new user account
+POST   /api/auth/login             authenticate, return JWT token
+GET    /api/auth/me                get current user profile (authenticated)
+
+FAVOURITES
+GET    /api/users/favourites       get current user's favourited games 
+                                    (authenticated)
+POST   /api/users/favourites/:gameId     add game to favourites
+DELETE /api/users/favourites/:gameId     remove game from favourites
+
+RECENTLY PLAYED
+GET    /api/users/recently-played  get current user's recently played 
+                                    games (authenticated)
+POST   /api/users/recently-played/:gameId  record a play event
+
+REWARDS / CURRENCY
+GET    /api/users/rewards          get current user's coin balance and 
+                                    daily reward status (authenticated)
+POST   /api/users/rewards/claim    claim daily reward (authenticated)
+
+NEWSLETTER
+POST   /api/newsletter/subscribe   subscribe an email to the newsletter
+
+Authentication: JWT-based. Passwords hashed with bcrypt. Protected 
+routes require a valid Bearer token.
+
+DATABASE SEED DATA
+A seed script must populate the database with:
+- Minimum 15 games across the 6 categories, with full metadata 
+  matching the structure in the assets document
+- Minimum 4 screenshots per game
+- Minimum 3 reviews per game
+- 6 categories with names and icons
+- At least 1 demo user account for testing (credentials documented 
+  in README)
+
+═══════════════════════════════════════════
+TECHNICAL REQUIREMENTS
+═══════════════════════════════════════════
+
+Frontend: React.js or Next.js, Tailwind CSS or CSS custom properties
+Backend: Node.js + Express, MongoDB (Mongoose) or equivalent
+Authentication: JWT
+The frontend must fetch all game, category, review, and trending data 
+from the backend API  no hardcoded game data in the frontend.
+Fully responsive across desktop (1440px), tablet (768px), mobile (375px)
+Dark mode is the default and only required theme
+All images: placeholder/royalty-free gaming images (picsum.photos, 
+unsplash, or similar)  no copyrighted game assets
+NSG logo (logo.png) used in navbar, sidebar, and footer exactly as provided
+Colour palette from NSG_UI_Design_System.pdf applied throughout
+Smooth scroll on horizontal card rows
+Hover states on all interactive elements
+Environment variables for database connection string and JWT secret, 
+documented in .env.example
+
+═══════════════════════════════════════════
+OUT OF SCOPE
+═══════════════════════════════════════════
+
+The following are explicitly NOT included in this engagement:
+
+- Real multiplayer netcode or a playable game engine (launching a game
+  shows a placeholder; no actual gameplay is built)
+- Real payment processing or real money in-app purchases (the coin balance
+  and daily rewards are simulated only)
+- Native iOS or Android applications (delivery is responsive web only at
+  1440px, 768px, and 375px)
+- Real email delivery for the newsletter (the subscribe endpoint stores the
+  email only; no SMTP or transactional email is sent)
+- OAuth or social login (authentication is email and password with JWT only)
+- Backend features for Community, Friends, Leaderboards, Tournaments, Events,
+  Clans, Forums, and Live Streams (these appear as navigation and footer
+  links only, with no functional endpoints)
+- An admin or content-management dashboard (game data is loaded by the seed
+  script only)
+- Production hosting, CI/CD, or domain setup (a local end-to-end run is the
+  delivery target)
+
+DELIVERABLES
+
+Complete frontend source code
+Complete backend source code with API server
+Database seed script with minimum 15 games
+README.md with full setup instructions for both frontend and backend, 
+including how to run the database seed script
+.env.example file for backend configuration
+Public GitHub repository containing both frontend/ and backend/ folders
+Application runs locally end to end: backend serves API, frontend 
+consumes it, all pages functional
+Console error free in Chrome on final delivery
